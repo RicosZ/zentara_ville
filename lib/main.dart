@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:zentara_ville/views/home_view.dart';
 
 import 'bindings/home_bindings.dart';
 import 'routes/app_pages.dart';
 
-void main() {
+void main() async {
+  await initializeDateFormatting();
   runApp(const App());
 }
 
@@ -27,26 +29,11 @@ class App extends StatelessWidget {
       child: GetMaterialApp(
         title: 'Zentara Ville',
         debugShowCheckedModeBanner: false,
-        //showPerformanceOverlay: true, //กดเปิดเพื่อดูประสิทธิภาพ ms per frame
-        // theme: Palette.themeData,
-        home: HomeView(),
+        home: const HomeView(),
         initialBinding: HomeBinding(),
-        //initialRoute: '/',// Route เริ่มต้น
-        //unknownRoute: GetPage(name : '/notfound',page: (() => UnknownRoutePage())), //กรณีไม่มี Route ที่อยู่ใน GetPage
         getPages: AppPage.routes,
-        // translations: AppTranslations(),
-        // locale: const Locale('th', 'TH'),
-        //locale: LocalStorage().getLocale(),
-        // fallbackLocale:
-        //     const Locale('th', 'TH'), //หากไม่มีภาษาที่เรียกใช้ให้มาภาษานี้แทน
-        // ใช้เปลี่ยนภาษาของ calender
-        // supportedLocales: const [Locale('th', 'TH'), Locale('en', 'GB')],
-        //localizationsDelegates: const [GlobalMaterialLocalizations.delegate],
-        // localizationsDelegates: const [
-        //   GlobalMaterialLocalizations.delegate,
-        //   GlobalWidgetsLocalizations.delegate,
-        //   GlobalCupertinoLocalizations.delegate,
-        // ],
+        fallbackLocale:
+            const Locale('th', 'TH'), //หากไม่มีภาษาที่เรียกใช้ให้มาภาษานี้แทน
       ),
     );
   }
