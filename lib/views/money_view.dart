@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:zentara_ville/models/convert_text.dart';
-import 'package:zentara_ville/models/data_model.dart';
+import 'package:zentara_ville/models/money_model.dart';
+import 'package:zentara_ville/widgets/money_manangement.dart';
 
 import '../controllers/money_controller.dart';
 import '../models/time_format.dart';
@@ -58,7 +59,7 @@ class MoneyView extends GetView<MoneyController> {
                   const Spacer(),
                   InkWell(
                     onTap: () {
-                      controller.printinf();
+                      Management().add(controller);
                     },
                     child: const Card(
                       child: Padding(
